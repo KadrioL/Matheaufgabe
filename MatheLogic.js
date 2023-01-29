@@ -4,6 +4,8 @@ var zeichen;
 var ergebnis;
 
 function rechenzeichen() {
+	changeBtnColor("#6666ff")
+	document.getElementById("checkB").innerText = "Check";
 	document.getElementById("loesung").value = "";
 	document.querySelector('#checkB').disabled = false;
 	var signs = ["+", "-", "x", ":"];
@@ -20,7 +22,9 @@ function rechenzeichen() {
 	}
 	write();
 }
-
+function changeBtnColor(n) {
+	document.getElementById('checkB').style.backgroundColor = n; 
+}
 function add() {
 	num1 = getRandomInt(101);
 	num2 = getRandomInt(100 - num1);
@@ -40,7 +44,7 @@ function mul() {
 }
 
 function div() {
-	num1 = getRandomInt(101);
+	num1 = getRandomInt(51);
 	var teiler = new Array();
 	for (let i = 1; i < num1; i++) {
 		if (num1 % i == 0) {
@@ -60,18 +64,23 @@ function write() {
 function checkSolution() {
 	document.querySelector('#checkB').disabled = true;
 	if (ergebnis == document.getElementById("loesung").value) {
-		var meldung = document.getElementById("meldung");
-		meldung.innerText="Das war richtig!";
+		changeBtnColor("#4CAF50")
+		document.getElementById("checkB").innerText = "Das war richtig";
 		
 		setTimeout(() => {  
-		meldung.innerText="";
 		rechenzeichen();
 		 }, 3000);
 		
 	}else{
-		var meldung = document.getElementById("meldung");
-		meldung.innerText="Das war falsch";
+		changeBtnColor("#f94449");
+		document.getElementById("checkB").innerText = "Das war falsch";
+		
+		setTimeout(() => {  
+		document.getElementById("checkB").innerText = "Check";
 		document.querySelector('#checkB').disabled = false;
+		changeBtnColor("#6666ff");
+		 }, 3000);
+		
 	}
 
 }
