@@ -49,13 +49,18 @@ function mul() {
 
 function div() {
 	num1 = getRandomInt(31);
-	var teiler = new Array();
-	for (let i = 1; i < num1; i++) {
-		if (num1 % i == 0) {
-			teiler.push(i);
+	if (num1 == 0) {
+		num2 == getRandomInt(31);
+	} else {
+		var teiler = new Array();
+		for (let i = 1; i <= num1; i++) {
+			if (num1 % i == 0) {
+				teiler.push(i);
+			}
 		}
+		num2 = teiler[getRandomInt(teiler.length)];
 	}
-	num2 = teiler[getRandomInt(teiler.length)];
+
 
 	ergebnis = num1 / num2;
 }
@@ -79,23 +84,23 @@ function checkSolution() {
 		counter--;
 		document.getElementById("counter").innerText = "Versuche: " + counter;
 		changeBtnColor("#f94449");
-		
-		if(counter == 0){
+
+		if (counter == 0) {
 			document.getElementById("checkB").innerText = "Das war falsch, neue Aufgabe";
 			document.getElementById("aufgabeloesung").innerText = "Richtig ist " + ergebnis;
 			setTimeout(() => {
-			
-			rechenzeichen();
-		}, 5000);
-		}else{
+
+				rechenzeichen();
+			}, 5000);
+		} else {
 			document.getElementById("checkB").innerText = "Das war falsch";
 			setTimeout(() => {
-			document.getElementById("checkB").innerText = "Check";
-			document.querySelector('#checkB').disabled = false;
-			changeBtnColor("#6666ff");
-		}, 3000);
+				document.getElementById("checkB").innerText = "Check";
+				document.querySelector('#checkB').disabled = false;
+				changeBtnColor("#6666ff");
+			}, 3000);
 		}
-		
+
 
 	}
 
