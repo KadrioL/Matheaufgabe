@@ -16,7 +16,12 @@ div {
 p {
 	font-size: 3em;
 }
-
+#counter{
+	position:absolute;
+	bottom: 65%;
+	border: 1px solid white;
+	padding: 5px;
+}
 input {
 	height: 50px;
 	width: 150px;

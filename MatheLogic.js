@@ -2,12 +2,15 @@ var num1;
 var num2;
 var zeichen;
 var ergebnis;
+var counter;
 
 function rechenzeichen() {
+	counter = 3;
 	changeBtnColor("#6666ff")
 	document.getElementById("checkB").innerText = "Check";
 	document.getElementById("loesung").value = "";
 	document.querySelector('#checkB').disabled = false;
+	document.getElementById("counter").innerText = "Versuche: " + counter;
 	var signs = ["+", "-", "x", ":"];
 	var rechenZ = signs[getRandomInt(4)];
 	zeichen = rechenZ;
@@ -23,7 +26,7 @@ function rechenzeichen() {
 	write();
 }
 function changeBtnColor(n) {
-	document.getElementById('checkB').style.backgroundColor = n; 
+	document.getElementById('checkB').style.backgroundColor = n;
 }
 function add() {
 	num1 = getRandomInt(101);
@@ -57,7 +60,7 @@ function div() {
 }
 function write() {
 	var paragraph = document.getElementById("aufgabe");
-	paragraph.innerText="" + num1 + " " + zeichen + " " + num2 + " = ";
+	paragraph.innerText = "" + num1 + " " + zeichen + " " + num2 + " = ";
 }
 
 
@@ -66,21 +69,32 @@ function checkSolution() {
 	if (ergebnis == document.getElementById("loesung").value) {
 		changeBtnColor("#4CAF50")
 		document.getElementById("checkB").innerText = "Das war richtig";
-		
-		setTimeout(() => {  
-		rechenzeichen();
-		 }, 3000);
-		
-	}else{
+
+		setTimeout(() => {
+			rechenzeichen();
+		}, 3000);
+
+	} else {
+		counter--;
+		document.getElementById("counter").innerText = "Versuche: " + counter;
 		changeBtnColor("#f94449");
-		document.getElementById("checkB").innerText = "Das war falsch";
 		
-		setTimeout(() => {  
-		document.getElementById("checkB").innerText = "Check";
-		document.querySelector('#checkB').disabled = false;
-		changeBtnColor("#6666ff");
-		 }, 3000);
+		if(counter == 0){
+			document.getElementById("checkB").innerText = "Das war falsch, neue Aufgabe";
+			setTimeout(() => {
+			
+			rechenzeichen();
+		}, 3000);
+		}else{
+			document.getElementById("checkB").innerText = "Das war falsch";
+			setTimeout(() => {
+			document.getElementById("checkB").innerText = "Check";
+			document.querySelector('#checkB').disabled = false;
+			changeBtnColor("#6666ff");
+		}, 3000);
+		}
 		
+
 	}
 
 }
