@@ -6,7 +6,8 @@ var counter;
 
 function rechenzeichen() {
 	counter = 3;
-	changeBtnColor("#6666ff")
+	changeBtnColor("#6666ff");
+	document.getElementById("aufgabeloesung").innerText = "";
 	document.getElementById("checkB").innerText = "Check";
 	document.getElementById("loesung").value = "";
 	document.querySelector('#checkB').disabled = false;
@@ -81,10 +82,11 @@ function checkSolution() {
 		
 		if(counter == 0){
 			document.getElementById("checkB").innerText = "Das war falsch, neue Aufgabe";
+			document.getElementById("aufgabeloesung").innerText = "Richtig ist " + ergebnis;
 			setTimeout(() => {
 			
 			rechenzeichen();
-		}, 3000);
+		}, 5000);
 		}else{
 			document.getElementById("checkB").innerText = "Das war falsch";
 			setTimeout(() => {
