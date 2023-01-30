@@ -30,13 +30,13 @@ function changeBtnColor(n) {
 	document.getElementById('checkB').style.backgroundColor = n;
 }
 function add() {
-	num1 = getRandomInt(101);
-	num2 = getRandomInt(100 - num1);
+	num1 = getRandomInt(30);
+	num2 = getRandomInt(30 - num1);
 	ergebnis = num1 + num2;
 }
 
 function sub() {
-	num1 = getRandomInt(101);
+	num1 = getRandomInt(30);
 	num2 = getRandomInt(num1);
 	ergebnis = num1 - num2;
 }
@@ -48,7 +48,7 @@ function mul() {
 }
 
 function div() {
-	num1 = getRandomInt(51);
+	num1 = getRandomInt(31);
 	var teiler = new Array();
 	for (let i = 1; i < num1; i++) {
 		if (num1 % i == 0) {
